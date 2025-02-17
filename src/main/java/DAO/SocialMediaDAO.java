@@ -11,7 +11,7 @@ import java.util.List;
 public class SocialMediaDAO {
     /*
      * inserts account into database using requested username and password
-     * returns whether insertion was successful
+     * returns whether insertion was successful.
      */
     public boolean insertAccount(Account account) {
         Connection conn = ConnectionUtil.getConnection();
