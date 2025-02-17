@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SocialMediaDAO {
+    /*
+     * inserts account into database using requested username and password
+     * returns whether insertion was successful
+     */
     public boolean insertAccount(Account account) {
         Connection conn = ConnectionUtil.getConnection();
         try {
@@ -24,6 +28,10 @@ public class SocialMediaDAO {
         return false;
     }
 
+    /*
+     * finds account based on unique username and correct associated password
+     * returns Account including account_id or null if unsuccessful 
+     */
     public Account getAccountByUsernamePassword(Account account) {
         Connection conn = ConnectionUtil.getConnection();
         try {
@@ -44,6 +52,10 @@ public class SocialMediaDAO {
         return null;
     }
 
+    /*
+     * inserts message with requested message_text, time_posted_epoch and posted_by Account id 
+     * returns message_id of inserted message or -1 if unsuccessful
+     */
     public int insertMessage(Message message) {
         Connection conn = ConnectionUtil.getConnection();
         try {
@@ -64,6 +76,10 @@ public class SocialMediaDAO {
         return -1;
     }
 
+    /*
+     * queries database to find all messages 
+     * returns list of Messages that is empty if none are found
+     */
     public List<Message> getAllMessages() {
         Connection conn = ConnectionUtil.getConnection();
         try {
@@ -88,6 +104,10 @@ public class SocialMediaDAO {
         return null;
     }
 
+    /*
+     * uses input message_id to find a particular Message
+     * returns found Message or null if unsuccessful
+     */
     public Message getMessageByID(int message_id) {
         Connection conn = ConnectionUtil.getConnection();
         try {
@@ -107,6 +127,10 @@ public class SocialMediaDAO {
         return null;
     }
 
+    /*
+     * uses message_id to delete a particular message 
+     * returns whether deletion is successful
+     */
     public boolean deleteMessageByID(int message_id) {
         Connection conn = ConnectionUtil.getConnection();
         try {
@@ -121,6 +145,10 @@ public class SocialMediaDAO {
         return false;
     }
 
+    /*
+     * find particular Message by message_id and updates it with input message_text
+     * returns whether update was successful
+     */
     public boolean updateMessageByID(String message_text, int message_id) {
         Connection conn = ConnectionUtil.getConnection();
         try {
@@ -136,6 +164,10 @@ public class SocialMediaDAO {
         return false;
     }
 
+    /*
+     * uses account_id to find list of messages associated with user
+     * return list of Messages that is empty if none are found
+     */
     public List<Message> getMessagesByAccountID(int account_id) {
         Connection conn = ConnectionUtil.getConnection();
         try {
